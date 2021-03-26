@@ -1,0 +1,8 @@
+{
+    "name": "default",
+    "type": "postgres",
+    "host": "172.18.0.2",
+    "username": "database_ignite",
+    "password": "ignite",
+    "database": "rentalcar"
+}

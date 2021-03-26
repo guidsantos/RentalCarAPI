@@ -1,0 +1,17 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "username": "postgres",
+    "password": "docker123",
+    "database": "rentalcar",
+    "entities": [
+        "src/modules/**/entities/*.ts"
+    ],
+    "migrations": [
+        "./src/database/migrations/*.ts"
+    ],
+    "cli": {
+        "migrationsDir": "./src/database/migrations",
+        "entitiesDir": "src/modules/**/entities"
+    }
+}
