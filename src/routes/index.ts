@@ -7,9 +7,10 @@ import { userRoutes } from "./users.routes"
 
 const router = Router()
 
+router.use(authenticateRoutes)
 router.use('/categories', categoriesRoutes)
 router.use('/specification', specificationsRoutes)
 router.use('/users', userRoutes)
-router.use(authenticateRoutes)
+
 
 export { router }

@@ -11,7 +11,7 @@ class CreateCategoryController {
 
         const createCategoryUseCase = container.resolve(CreateCategoryUseCase)
 
-        createCategoryUseCase.execute({ name, description })
+        await createCategoryUseCase.execute({ name, description })
 
 
         return response.status(201).send()
