@@ -1,6 +1,7 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
 import { IListAvailableCarsDTO } from "@modules/cars/dtos/IListAvailableCarsDTO";
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
+import { isThrowStatement } from "typescript";
 import { ICarsRepository } from "../ICarsRepository";
 
 
@@ -14,7 +15,9 @@ class CarsRepositoryInMemory implements ICarsRepository {
         license_plate,
         fine_amount,
         brand,
-        category_id
+        category_id,
+        specifications,
+        id
     }: ICreateCarDTO): Promise<Car> {
         const car = new Car()
 
@@ -25,7 +28,9 @@ class CarsRepositoryInMemory implements ICarsRepository {
             license_plate,
             fine_amount,
             brand,
-            category_id
+            category_id,
+            specifications,
+            id
         })
 
         this.cars.push(car)
@@ -56,6 +61,10 @@ class CarsRepositoryInMemory implements ICarsRepository {
 
 
         return allAvailableCars
+    }
+
+    async findById(id: string): Promise<Car> {
+        return this.cars.find((car) => car.id === id)
     }
 }
 
