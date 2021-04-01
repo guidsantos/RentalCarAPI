@@ -6,10 +6,10 @@ import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 
 
 
-// @injectable()
+@injectable()
 class CreateCarUseCase {
     constructor(
-        // @inject('CarsRepository')
+        @inject('CarsRepository')
         private carsRepository: ICarsRepository
     ) { }
 
@@ -17,13 +17,13 @@ class CreateCarUseCase {
         name,
         description,
         daily_rate,
-        liscense_plate,
+        license_plate,
         fine_amount,
         brand,
         category_id }:
         ICreateCarDTO): Promise<Car> {
 
-        const carAlreadyExists = await this.carsRepository.findByLicensePlate(liscense_plate)
+        const carAlreadyExists = await this.carsRepository.findByLicensePlate(license_plate)
 
         if (carAlreadyExists) {
             throw new AppError('Car already exists!')
@@ -34,7 +34,7 @@ class CreateCarUseCase {
             name,
             description,
             daily_rate,
-            liscense_plate,
+            license_plate,
             fine_amount,
             brand,
             category_id
