@@ -3,10 +3,10 @@ import { ICreateCategoryDTO } from "@modules/cars/repositories/ICategoriesReposi
 import { CategoriesRepositoryInMemory } from "@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory"
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase"
 
-describe('Create Category', () => {
+let createCategoryUseCase: CreateCategoryUseCase
+let categoriesRepositoryInMemory: CategoriesRepositoryInMemory
 
-    let createCategoryUseCase: CreateCategoryUseCase
-    let categoriesRepositoryInMemory: CategoriesRepositoryInMemory
+describe('Create Category', () => {
 
     beforeEach(() => {
         categoriesRepositoryInMemory = new CategoriesRepositoryInMemory()
