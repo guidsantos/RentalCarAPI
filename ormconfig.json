@@ -5,13 +5,13 @@
     "password": "docker123",
     "database": "rentalcar",
     "entities": [
-        "src/modules/**/entities/*.ts"
+        "src/modules/**/infra/typeorm/entities/*.ts"
     ],
     "migrations": [
-        "./src/database/migrations/*.ts"
+        "./src/shared/infra/typeorm/migrations/*.ts"
     ],
     "cli": {
-        "migrationsDir": "./src/database/migrations",
-        "entitiesDir": "src/modules/**/entities"
+        "migrationsDir": "./src/shared/infra/typeorm/migrations",
+        "entitiesDir": "src/modules/**/infra/typeorm/entities"
     }
 }

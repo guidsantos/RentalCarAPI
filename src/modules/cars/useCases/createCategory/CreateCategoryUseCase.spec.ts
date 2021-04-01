@@ -1,5 +1,6 @@
-import AppError from "../../../../errors/AppError"
-import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoriesRepositoryInMemory"
+import AppError from "@shared/errors/AppError"
+import { ICreateCategoryDTO } from "@modules/cars/repositories/ICategoriesRepository"
+import { CategoriesRepositoryInMemory } from "@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory"
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase"
 
 describe('Create Category', () => {
@@ -13,7 +14,7 @@ describe('Create Category', () => {
     })
 
     it('should be able to create a new category', async () => {
-        const category = {
+        const category: ICreateCategoryDTO = {
             name: 'Category Test',
             description: 'Category description Test'
         }
@@ -29,7 +30,7 @@ describe('Create Category', () => {
 
     it('should no be able to create a new category with same name', async () => {
         expect(async () => {
-            const category = {
+            const category: ICreateCategoryDTO = {
                 name: 'Category Test',
                 description: 'Category description Test'
             }
