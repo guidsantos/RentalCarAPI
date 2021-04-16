@@ -1,7 +1,7 @@
 import AppError from "@shared/errors/AppError";
 import dayjs from "dayjs";
 
-import { RentalsRepositoryInMemory } from "../repositories/repositories/RentalsRepositoryInMemory";
+import { RentalsRepositoryInMemory } from "@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory";
 import { CreateRentalUseCase } from "./CreateRentalUseCase";
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
 import { DayJsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayJsDateProvider";
@@ -28,9 +28,19 @@ describe('Create Rental', () => {
 
     it('should be able to create a new rental',
         async () => {
+            const car = await carsRepositoryInMemory.create({
+                name: 'Car',
+                brand: 'brand',
+                category_id: '1234',
+                daily_rate: 10,
+                description: 'description',
+                fine_amount: 100,
+                license_plate: '1123124',
+                id: '1234'
+            })
             const rental = await createRentalUseCase.execute({
                 user_id: '1235',
-                car_id: '121212',
+                car_id: car.id,
                 expected_return_date: dayAdd24hours
             })
 
