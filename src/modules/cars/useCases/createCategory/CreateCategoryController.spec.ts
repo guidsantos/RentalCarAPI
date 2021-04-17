@@ -6,6 +6,7 @@ import { hash } from 'bcrypt'
 
 import createConnection from '@shared/infra/typeorm'
 import { app } from '@shared/infra/http/app'
+import AppError from '@shared/errors/AppError'
 
 
 let connection: Connection
@@ -50,7 +51,7 @@ describe('Create Category Controller', () => {
             })
         expect(response.status).toBe(201)
     })
-    it('should no be able to create a new category with same name', async () => {
+    it('should not be able to create a new category with same name', async () => {
         const responseToken = await request(app).post('/sessions')
             .send({
                 email: 'admin@rentx.com',
