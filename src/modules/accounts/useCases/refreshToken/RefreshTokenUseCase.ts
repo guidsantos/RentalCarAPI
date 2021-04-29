@@ -24,7 +24,7 @@ class RefreshTokenUseCase {
 
         const user_id = sub
 
-        const userToken = await this.usersTokensRepository.findByUserIdAndRefreshToken(token, user_id)
+        const userToken = await this.usersTokensRepository.findByUserIdAndRefreshToken(user_id, token)
 
         if (!userToken) {
             throw new AppError('Refresh Token does not exists!')
